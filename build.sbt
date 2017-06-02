@@ -9,4 +9,6 @@ scalaVersion := "2.11.11"
 libraryDependencies += jdbc
 libraryDependencies += cache
 libraryDependencies += ws
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test
+// https://mvnrepository.com/artifact/postgresql/postgresql
+libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
+libraryDependencies += "org.webjars.npm" % "angular__core" % "4.1.3"
