@@ -11,4 +11,4 @@ libraryDependencies += cache
 libraryDependencies += ws
 // https://mvnrepository.com/artifact/postgresql/postgresql
 libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
-libraryDependencies += "org.webjars.npm" % "angular__core" % "4.1.3"
+libraryDependencies += "org.webjars.npm" % "jquery" % "3.2.1"
