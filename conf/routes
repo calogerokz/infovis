@@ -2,8 +2,12 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
+# Pages
 GET     /                           controllers.HomeController.index
+GET     /map                        controllers.HomeController.map
+GET     /statistics                 controllers.HomeController.statistics
+
+# API
 GET     /query/:query               controllers.Api.query(query)
 
 
