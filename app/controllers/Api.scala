@@ -64,4 +64,31 @@ class Api @Inject()(db: Database) extends Controller {
       Ok(jsonList)
     }
   }
+
+  def event(id: String) = Action {
+    val conn = db.getConnection()
+
+    try {
+      val stmt = conn.createStatement
+      val rs = stmt.executeQuery("SELECT * FROM events WHERE id=".concat(id))
+      val rsmd = rs.getMetaData();
+      val numberOfColumns = rsmd.getColumnCount();
+      var list = new ListBuffer[JsArray]()
+      while(rs.next()) {
+        var column = new ListBuffer[String]()
+        for (i <- 1 to numberOfColumns) {
+          column += rs.getString(i)
+        }
+        val columnList = column.toList
+        val row = Json.arr(columnList)
+        list += row
+      }
+      val finalList = list.toList
+      val jsonList = Json.arr(finalList)
+
+      Ok(jsonList)
+    }
+  }
 }
+
+

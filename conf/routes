@@ -12,6 +12,8 @@ GET     /map_vis_test               controllers.HomeController.map_vis_test
 # API
 GET     /query/:query               controllers.Api.query(query)
 GET     /events/:season             controllers.Api.events(season)
+GET     /events/:id                 controllers.Api.event(id)
+
 
 
 
