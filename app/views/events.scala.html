@@ -1,0 +1,23 @@
+@(title: String)
+@main(title) {
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                Please select a season
+            </div>
+            <div class="col-lg-10">
+                <input id="seasonSlider" type="text"
+                data-provide="slider"
+                data-slider-ticks="[1, 2, 3, 4]"
+                data-slider-ticks-labels='["winter", "spring", "summer", "autumn"]'
+                data-slider-min="1"
+                data-slider-max="4"
+                data-slider-step="1"
+                data-slider-value="1"
+                data-slider-tooltip="hide" style="width:100%;" />
+            </div>
+        </div>
+    </div>
+
+    <script src="@routes.Assets.versioned("javascripts/map.js")" type="text/javascript"></script>
+}

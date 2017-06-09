@@ -5,10 +5,12 @@
 # Pages
 GET     /                           controllers.HomeController.index
 GET     /map                        controllers.HomeController.map
-GET     /statistics                 controllers.HomeController.statistics
+GET     /events                     controllers.HomeController.events
 
 # API
 GET     /query/:query               controllers.Api.query(query)
+GET     /events/:season             controllers.Api.query(season)
+
 
 
 # Map static resources from the /public folder to the /assets URL path

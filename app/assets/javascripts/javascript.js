@@ -4,7 +4,7 @@ var request = function() {
     $.ajax({
         url: "/query/"+"select id from random311",
     }).done(function( data ) {
-        console.log(data)
+        console.log(data);
   });
 };
 
