@@ -38,6 +38,8 @@ class Api @Inject()(db: Database) extends Controller {
       Ok(jsonList)
     }
   }
+
+
   def events(season: String) = Action {
     val conn = db.getConnection()
 

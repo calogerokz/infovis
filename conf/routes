@@ -9,7 +9,7 @@ GET     /events                     controllers.HomeController.events
 
 # API
 GET     /query/:query               controllers.Api.query(query)
-GET     /events/:season             controllers.Api.query(season)
+GET     /events/:season             controllers.Api.events(season)
 
 
 
