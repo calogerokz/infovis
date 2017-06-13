@@ -2,10 +2,10 @@
 @main(title) {
     <div class="container">
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-sm-2">
                 Please select a season
             </div>
-            <div class="col-lg-10">
+            <div class="col-sm-10">
                 <input id="seasonSlider" type="text"
                 data-provide="slider"
                 data-slider-ticks="[1, 2, 3, 4]"
@@ -18,19 +18,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-sm-4">
                 <div class="row">
                     <h3>Events</h3>
-                </div>
-                <div class="row" id="eventContainer">
+                    <div class="row" id="eventContainer">
 
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-sm-8">
                 <div class="row" id="eventTitle"></div>
+                <div class="row" id="event">
+                </div>
             </div>
         </div>
     </div>
-
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2K0n8NjkUcqj3Ozphbk3SqTMhnxYgfts&libraries=visualization">
+    </script>
     <script src="@routes.Assets.versioned("javascripts/events.js")" type="text/javascript"></script>
 }

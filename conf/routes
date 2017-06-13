@@ -6,7 +6,6 @@
 GET     /                           controllers.HomeController.index
 GET     /map                        controllers.HomeController.map
 GET     /events                     controllers.HomeController.events
-GET     /map_vis_test               controllers.HomeController.map_vis_test
 
 
 # API

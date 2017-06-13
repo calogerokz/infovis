@@ -29,8 +29,5 @@ class HomeController @Inject() extends Controller {
     Ok(views.html.events("New York 311 requests statistics"))
   }
 
-  def map_vis_test = Action {
-    Ok(views.html.map_vis_test("New York 311 requests map"))
-  }
 
 }
