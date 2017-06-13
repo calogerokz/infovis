@@ -14,9 +14,9 @@ import scala.collection.mutable.ListBuffer
 @Singleton
 class Api @Inject()(db: Database) extends Controller {
 
-  def query(q: String) = Action {
-    val conn = db.getConnection()
+  val conn = db.getConnection()
 
+  def query(q: String) = Action {
     try {
       val stmt = conn.createStatement
       val rs = stmt.executeQuery(q)
@@ -41,8 +41,6 @@ class Api @Inject()(db: Database) extends Controller {
 
 
   def events(season: String) = Action {
-    val conn = db.getConnection()
-
     try {
       val stmt = conn.createStatement
       val rs = stmt.executeQuery("SELECT * FROM events WHERE season=".concat(season))
@@ -66,11 +64,34 @@ class Api @Inject()(db: Database) extends Controller {
   }
 
   def event(id: String) = Action {
-    val conn = db.getConnection()
-
     try {
       val stmt = conn.createStatement
       val rs = stmt.executeQuery("SELECT * FROM events WHERE id=".concat(id))
+      val rsmd = rs.getMetaData();
+      val numberOfColumns = rsmd.getColumnCount();
+      var list = new ListBuffer[JsArray]()
+      while(rs.next()) {
+        var column = new ListBuffer[String]()
+        for (i <- 1 to numberOfColumns) {
+          column += rs.getString(i)
+        }
+        val columnList = column.toList
+        val row = Json.arr(columnList)
+        list += row
+      }
+      val finalList = list.toList
+      val jsonList = Json.arr(finalList)
+
+      Ok(jsonList)
+    }
+  }
+
+  def eventFive(first: String, second: String, third: String, forth: String, fifth:String) = Action {
+
+
+    try {
+      val stmt = conn.createStatement
+      val rs = stmt.executeQuery("SELECT latitude, longitude FROM events WHERE complain_type=".concat(id))
       val rsmd = rs.getMetaData();
       val numberOfColumns = rsmd.getColumnCount();
       var list = new ListBuffer[JsArray]()

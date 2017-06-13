@@ -3,15 +3,17 @@
 # ~~~~
 
 # Pages
-GET     /                           controllers.HomeController.index
-GET     /map                        controllers.HomeController.map
-GET     /events                     controllers.HomeController.events
+GET     /                                                  controllers.HomeController.index
+GET     /map                                               controllers.HomeController.map
+GET     /events                                            controllers.HomeController.events
 
 
 # API
-GET     /query/:query               controllers.Api.query(query)
-GET     /events/:season             controllers.Api.events(season)
-GET     /events/:id                 controllers.Api.event(id)
+GET     /query/:query                                      controllers.Api.query(query)
+GET     /events/:season                                    controllers.Api.events(season)
+GET     /events/:id                                        controllers.Api.event(id)
+GET     /events/:first/:second/:third/:forth/:fifth        controllers.Api.eventFive(first,second,third,forth,fifth)
+
 
 
 

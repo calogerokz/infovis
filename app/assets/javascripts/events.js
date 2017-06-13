@@ -19,7 +19,7 @@ var show = function(id) {
     }).done(function( data ) {
             console.log(data);
             $("#eventTitle").html("<center><h3>"+data[0][0][0][6]+"</h3></center>");
-            $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks='[1, 2, 3]' data-slider-min='1' data-slider-max='3' data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' />");
+            $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks='[1, 2, 3]' data-slider-min='1' data-slider-max='3' data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' /><br/><br/>");
             $("#eventSlider").slider({});
             $("#event").append("<div id='map' style='height:500px;'></div>");
             initMap();
@@ -33,7 +33,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: {lat: 37.775, lng: -122.434},
-        mapTypeId: 'satellite'
+        mapTypeId: 'roadmap'
     });
 
     heatmap = new google.maps.visualization.HeatmapLayer({
