@@ -86,12 +86,13 @@ class Api @Inject()(db: Database) extends Controller {
     }
   }
 
-  def eventFive(first: String, second: String, third: String, forth: String, fifth:String) = Action {
-
-
+  def eventFive(first: String, second: String, third: String, forth: String, fifth:String, day:String, month:String, year:String) = Action {
+    val dayString = month.concat("/").concat(day).concat("/").concat(year)
     try {
       val stmt = conn.createStatement
-      val rs = stmt.executeQuery("SELECT latitude, longitude FROM events WHERE complain_type=".concat(id))
+      val q = "SELECT latitude, longitude FROM year2016 WHERE created_date LIKE '".concat(dayString).concat("%' AND (complaint_type='").concat(first).concat("' OR complaint_type='").concat(second).concat("' OR complaint_type='").concat(third).concat("' OR complaint_type='").concat(forth).concat("' OR complaint_type='").concat(fifth).concat("') AND latitude IS NOT NULL")
+      print(q)
+      val rs = stmt.executeQuery(q)
       val rsmd = rs.getMetaData();
       val numberOfColumns = rsmd.getColumnCount();
       var list = new ListBuffer[JsArray]()
