@@ -33,7 +33,9 @@ var show = function(id) {
             $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks='[1, 2, 3]' data-slider-min='1' data-slider-max='3' data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' /><br/><br/>");
             $("#eventSlider").slider({});
             $("#event").append("<div id='map' style='height:500px;'></div>");
-            day = data[0][0][0][10];
+            day = Date(data[0][0][0][10]);
+            console.log(Date.parse())
+            initMap();
             getPoints(data[0][0][0][10],data[0][0][0][1],data[0][0][0][2],data[0][0][0][3],data[0][0][0][4],data[0][0][0][5]);
             $("#event").append("<h4>Top 5 complaints</h4>1."+data[0][0][0][1]+"<br/> 2."+data[0][0][0][2]+"<br/> 3."+data[0][0][0][3]+"<br/> 4."+data[0][0][0][4]+"<br/> 5."+data[0][0][0][5]);
     });
@@ -41,7 +43,7 @@ var show = function(id) {
 
 var map, heatmap;
 
-function initMap(points) {
+function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: {lat: 37.775, lng: -122.434},
@@ -49,7 +51,7 @@ function initMap(points) {
     });
 
     heatmap = new google.maps.visualization.HeatmapLayer({
-        data: points,
+        data: [],
         map: map
     });
 }
@@ -59,12 +61,12 @@ function getPoints(d,e1,e2,e3,e4,e5) {
     $.ajax({
         url: "/events/"+e1+"/"+e2+"/"+e3+"/"+e4+"/"+e5+"/"+dateString,
     }).done(function( data ) {
-        var points = [];
+        points = [];
         for (i=0;i<data[0].length;i++) {
-            console.log(parseFloat(data[0][i][0][0]),parseFloat(data[0][i][0][0]));
-            points.push(new google.maps.LatLng(parseFloat(data[0][i][0][0]),parseFloat(data[0][i][0][0])));
+            points.push(new google.maps.LatLng(parseFloat(data[0][i][0][0]),parseFloat(data[0][i][0][1])));
         }
-        setTimeout(function(){ initMap(points); }, 10000);
+        heatmap.setData(points);
+
     });
 }
 
