@@ -27,7 +27,6 @@ var day2 = "";
 var day3 = "";
 
 var show = function(id) {
-    console.log(id);
     var url = "/events/id/"+id;
     $.ajax({
         url: url,
@@ -36,8 +35,6 @@ var show = function(id) {
             day2 = new Date(day-1);
             day3 = new Date(day);
             day3.setDate(day.getDate() + 1);
-            console.log(day2.toISOString());
-            console.log(day3.toISOString());
             $("#eventTitle").html("<center><h3>"+data[0][6]+"</h3></center>");
             $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks='[1, 2, 3]' data-slider-min='1' data-slider-max='3' data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' /><br/><br/>");
             $("#eventSlider").slider({});
@@ -75,7 +72,6 @@ function initMap() {
 
 function getPoints(d,e1,e2,e3,e4,e5) {
     var dateString = d.split("-")[2].split("T")[0]+"/"+d.split("-")[1]+"/"+d.split("-")[0];
-    console.log(dateString);
     $.ajax({
         url: "/events/"+e1+"/"+e2+"/"+e3+"/"+e4+"/"+e5+"/"+dateString,
     }).done(function( data ) {
