@@ -64,25 +64,22 @@ class Api @Inject()(db: Database) extends Controller {
   }
 
   def event(id: String) = Action {
+    print(id)
     try {
       val stmt = conn.createStatement
       val rs = stmt.executeQuery("SELECT * FROM events WHERE id=".concat(id))
       val rsmd = rs.getMetaData();
       val numberOfColumns = rsmd.getColumnCount();
-      var list = new ListBuffer[JsArray]()
+      var list = new JsArray();
       while(rs.next()) {
         var column = new ListBuffer[String]()
         for (i <- 1 to numberOfColumns) {
           column += rs.getString(i)
         }
         val columnList = column.toList
-        val row = Json.arr(columnList)
-        list += row
+        list = Json.arr(columnList)
       }
-      val finalList = list.toList
-      val jsonList = Json.arr(finalList)
-
-      Ok(jsonList)
+      Ok(list)
     }
   }
 
@@ -91,7 +88,6 @@ class Api @Inject()(db: Database) extends Controller {
     try {
       val stmt = conn.createStatement
       val q = "SELECT latitude, longitude FROM year2016 WHERE created_date LIKE '".concat(dayString).concat("%' AND (complaint_type='").concat(first).concat("' OR complaint_type='").concat(second).concat("' OR complaint_type='").concat(third).concat("' OR complaint_type='").concat(forth).concat("' OR complaint_type='").concat(fifth).concat("') AND latitude IS NOT NULL")
-      print(q)
       val rs = stmt.executeQuery(q)
       val rsmd = rs.getMetaData();
       val numberOfColumns = rsmd.getColumnCount();
