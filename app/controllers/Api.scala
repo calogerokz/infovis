@@ -64,7 +64,6 @@ class Api @Inject()(db: Database) extends Controller {
   }
 
   def event(id: String) = Action {
-    print(id)
     try {
       val stmt = conn.createStatement
       val rs = stmt.executeQuery("SELECT * FROM events WHERE id=".concat(id))
