@@ -1,5 +1,117 @@
 @(title: String)
 @main(title) {
+    <center><h1>311 Calls: a window to life in New York</h1></center>
+    <div class="story">
+    <p>New York City is often referred to collectively as the five boroughs - Brooklyn, Queens, Manhattan,
 
-<input type="submit" onclick="request()" />
+        The Bronx, and Staten Island.</p>
+
+    <p>If the boroughs were each independent cities, four of the boroughs (Brooklyn, Queens, Manhattan, and
+
+    the Bronx) would be among the ten most populous cities in the United States (Staten island would be
+
+    ranked 37th) ; these same boroughs are coterminous with the four most densely populated counties in
+
+        the United States (New York [Manhattan], Kings [Brooklyn], Bronx, and Queens).</p>
+
+    <p><b>311</b> is a special telephone number supported in many communities in Canada and the United States.
+
+    The number provides access to non-emergency municipal services. People can call in many cities to
+
+    find information about services, make complaints, or report problems like graffiti or road damage. The
+
+    number 311 is intended in part to divert routine inquiries and non-urgent community concerns from the
+
+    911 number which is reserved for emergency service. 311 has evolved with technological advances
+
+    into a multi-channel service that connects citizen with government, while also providing a wealth of
+
+        data that improves how cities are run.</p>
+
+    <p>For us, we might find some interesting fact of New Yorkers’ life by exploring 311 data. After
+
+    exploring the data we have, we found that, for the past seven years, below complaints are always listed
+
+    on top of the complaint/requires list. For a busy city like New York, it might not be a surprise to see
+
+    noise complaint is on top of the list; however, in such a modern city, it is a bit surprise to see that
+
+    "Heating" and "Heat/Hot Water" are on top of those complaints. In deed, "Heating" and "Heat/Hot
+
+        Water" are always listed at top 1 on the list.</p>
+    <ul>
+        <li>Heating/Hot water</li>
+        <li>Noise – Residential</li>
+        <li>Light Condition</li>
+        <li>Street Condition</li>
+        <li>Blocked Driveway</li>
+        <li>Water System</li>
+        <li>Illegal Parking</li>
+    </ul>
+
+    <p>Can we see more from the data? What the Now Yorkers most concern about, or what the New Yorkers
+
+    are struggling in their daily life; what factors have the most impact on their daily life; if special
+
+    events/incidents have significant impact on New Yorkers’ daily life. And it is also interesting to see if
+
+        there are any patterns regarding the five boroughs for those complaints.</p>
+
+    <p>With those questions in mind we look future into our data. We found that Queens is "biggest" borough
+
+    among five boroughs, but Brooklyn has the "biggest" complaints. But it is not a surprise if we look at
+
+    population density; Brooklyn has larger population than Queens. On the other hand, Staten Island has
+
+    the least "Heating" and "Heat/Hot Water" complaints/requires, but it is the third largest in area
+
+        150 km<sup>2</sup>. It has 0.5% complaint rate regarding “heating” in year 2016 (2197 complaints over its
+
+    population of 476,015), it is a lot more less than the overall New York complaint rate of 2.7%
+
+    regarding “heating” in year 2016. What is on your mind now? You are right, Staten Island is the richest
+
+        borough among five.</p>
+
+        <p>(Complaint numbers info from dataset, populations info from <a href="https://en.wikipedia.org/wiki/Staten_Island">Wikipedia</a>
+
+    , income info from <a href="http://www.slate.com/articles/business/moneybox/2014/01/new_york_city_census_data_manhattan_and_brooklyn_are_much_poorer_than_you.html">here</a>
+    )</p>
+
+    <p>We design two visualization graphs with the goal to unfold some insight from 311 calls. The first graph
+
+    is to show the distribution of complaint types among five boroughs. See below graph. On the right
+
+    hand side of the New York map, the top 10 complaints/requires are listed. You can choose one or few
+
+    of them to see the distribution according to the five boroughs; you can also specify the time/time
+
+        window to see if different time has different affect on 311 calls.</p>
+
+    <p>It is not hard to imagine, like “heating” complaint/requires have strong seasonal pattern, calls are
+
+    highly concentrate in winter season; (---- Will add it if we can make a graph to show seasonal pattern.)
+
+    requires regarding “snow” are mainly happened in winter, especially in January. On the other hand,
+
+    “noise” complaints tend to have peaks on the weekends and on the public holidays. But, is there
+
+    anything else? What factors have the most impact on New Yorkers’ daily life, if special
+
+    events/incidents have significant impact on New Yorkers’ daily life? We found that other than the
+
+    usually complains about "noise", "heating"; "LEAD” complaint become one on the top of the list on St
+
+    Patrick’s Day. There are about 5,000 "Lead" complaints in year 2016, but there are 388 "Lead"
+
+    complains on the single day of St Patrick's Day. It is almost 8% of the whole year’s complaints in a
+
+        single day.</p>
+
+    <p>The second graph is trying to find some insight of how events/incidents impact on 311 calls. We pick
+
+    two events/incidents for each season, to see how are the impacts on 311 calls. (then will go on the
+
+        descript how the interface works)</p>
+    </div>
 }
