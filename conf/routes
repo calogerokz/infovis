@@ -14,6 +14,7 @@ GET     /events/:season                                    controllers.Api.event
 GET     /events/id/:id                                     controllers.Api.event(id)
 GET     /events/:first/:second/:third/:forth/:fifth/:day/:month/:year   controllers.Api.eventFive(first,second,third,forth,fifth,day,month,year)
 GET     /events/count/:first/:second/:third/:forth/:fifth/:day/:month/:year   controllers.Api.countFive(first,second,third,forth,fifth,day,month,year)
+GET     /events/highlight/:highlight/:day/:month/:year   controllers.Api.eventHighlight(highlight,day,month,year)
 
 
 

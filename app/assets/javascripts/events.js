@@ -40,17 +40,18 @@ var show = function(id) {
             $("#eventSlider").slider({});
             $("#eventSlider").slider().on('slideStop', function(ev){
                 if ($("#eventSlider").data('slider').getValue() == 1){
-                    getPoints(day2.toISOString(),data[0][1],data[0][2],data[0][3],data[0][4],data[0][5]);
+                    getPoints(day2.toISOString(),data[0][12]);
                 } else if ($("#eventSlider").data('slider').getValue() == 2) {
-                    getPoints(day.toISOString(),data[0][1],data[0][2],data[0][3],data[0][4],data[0][5]);
+                    getPoints(day.toISOString(),data[0][12]);
                 } else {
-                    getPoints(day3.toISOString(),data[0][1],data[0][2],data[0][3],data[0][4],data[0][5]);
+                    getPoints(day3.toISOString(),data[0][12]);
                 }
             });
+            $("#event").append("<div id='title' style='height:50px;'><h3>"+data[0][12]+"</h3></div>");
             $("#event").append("<div id='map' style='height:500px;'></div>");
 
             initMap();
-            getPoints(day2.toISOString(),data[0][1],data[0][2],data[0][3],data[0][4],data[0][5]);
+            getPoints(day2.toISOString(),data[0][12]);
             $("#event").append("<br/><h3>Top 5 complaints statistics for 3 days</h3>1."+data[0][1]+"<br/> 2."+data[0][2]+"<br/> 3."+data[0][3]+"<br/> 4."+data[0][4]+"<br/> 5."+data[0][5]);
     });
 };
@@ -70,10 +71,10 @@ function initMap() {
     });
 }
 
-function getPoints(d,e1,e2,e3,e4,e5) {
+function getPoints(d,highlight) {
     var dateString = d.split("-")[2].split("T")[0]+"/"+d.split("-")[1]+"/"+d.split("-")[0];
     $.ajax({
-        url: "/events/"+e1+"/"+e2+"/"+e3+"/"+e4+"/"+e5+"/"+dateString,
+        url: "/events/highlight/"+highlight+"/"+dateString,
     }).done(function( data ) {
         points = [];
         for (i=0;i<data[0].length;i++) {
