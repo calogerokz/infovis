@@ -106,6 +106,87 @@ class Api @Inject()(db: Database) extends Controller {
       Ok(jsonList)
     }
   }
+
+  def countFive(first: String, second: String, third: String, forth: String, fifth:String, day:String, month:String, year:String) = Action {
+    val dayString = month.concat("/").concat(day).concat("/").concat(year)
+    try {
+      val stmt = conn.createStatement
+      var q = "SELECT count(*) FROM year2016 WHERE created_date LIKE '".concat(dayString).concat("%' AND complaint_type='").concat(first).concat("')")
+      var rs = stmt.executeQuery(q)
+      var rsmd = rs.getMetaData();
+      var numberOfColumns = rsmd.getColumnCount();
+      var list = new ListBuffer[JsArray]()
+      while(rs.next()) {
+        var column = new ListBuffer[String]()
+        for (i <- 1 to numberOfColumns) {
+          column += rs.getString(i)
+        }
+        val columnList = column.toList
+        val row = Json.arr(columnList)
+        list += row
+      }
+      q = "SELECT count(*) FROM year2016 WHERE created_date LIKE '".concat(dayString).concat("%' AND complaint_type='").concat(second).concat("')")
+      rs = stmt.executeQuery(q)
+      rsmd = rs.getMetaData();
+      numberOfColumns = rsmd.getColumnCount();
+      list = new ListBuffer[JsArray]()
+      while(rs.next()) {
+        var column = new ListBuffer[String]()
+        for (i <- 1 to numberOfColumns) {
+          column += rs.getString(i)
+        }
+        val columnList = column.toList
+        val row = Json.arr(columnList)
+        list += row
+      }
+      q = "SELECT count(*) FROM year2016 WHERE created_date LIKE '".concat(dayString).concat("%' AND complaint_type='").concat(third).concat("')")
+      rs = stmt.executeQuery(q)
+      rsmd = rs.getMetaData();
+      numberOfColumns = rsmd.getColumnCount();
+      list = new ListBuffer[JsArray]()
+      while(rs.next()) {
+        var column = new ListBuffer[String]()
+        for (i <- 1 to numberOfColumns) {
+          column += rs.getString(i)
+        }
+        val columnList = column.toList
+        val row = Json.arr(columnList)
+        list += row
+      }
+      q = "SELECT count(*) FROM year2016 WHERE created_date LIKE '".concat(dayString).concat("%' AND complaint_type='").concat(forth).concat("')")
+      rs = stmt.executeQuery(q)
+      rsmd = rs.getMetaData();
+      numberOfColumns = rsmd.getColumnCount();
+      list = new ListBuffer[JsArray]()
+      while(rs.next()) {
+        var column = new ListBuffer[String]()
+        for (i <- 1 to numberOfColumns) {
+          column += rs.getString(i)
+        }
+        val columnList = column.toList
+        val row = Json.arr(columnList)
+        list += row
+      }
+      q = "SELECT count(*) FROM year2016 WHERE created_date LIKE '".concat(dayString).concat("%' AND complaint_type='").concat(fifth).concat("')")
+      rs = stmt.executeQuery(q)
+      rsmd = rs.getMetaData();
+      numberOfColumns = rsmd.getColumnCount();
+      list = new ListBuffer[JsArray]()
+      while(rs.next()) {
+        var column = new ListBuffer[String]()
+        for (i <- 1 to numberOfColumns) {
+          column += rs.getString(i)
+        }
+        val columnList = column.toList
+        val row = Json.arr(columnList)
+        list += row
+      }
+      val finalList = list.toList
+      val jsonList = Json.arr(finalList)
+
+      Ok(jsonList)
+    }
+  }
 }
 
 

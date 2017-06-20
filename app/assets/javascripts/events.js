@@ -51,7 +51,7 @@ var show = function(id) {
 
             initMap();
             getPoints(day2.toISOString(),data[0][1],data[0][2],data[0][3],data[0][4],data[0][5]);
-            $("#event").append("<h4>Top 5 complaints</h4>1."+data[0][1]+"<br/> 2."+data[0][2]+"<br/> 3."+data[0][3]+"<br/> 4."+data[0][4]+"<br/> 5."+data[0][5]);
+            $("#event").append("<br/><h3>Top 5 complaints statistics for 3 days</h3>1."+data[0][1]+"<br/> 2."+data[0][2]+"<br/> 3."+data[0][3]+"<br/> 4."+data[0][4]+"<br/> 5."+data[0][5]);
     });
 };
 
@@ -81,6 +81,14 @@ function getPoints(d,e1,e2,e3,e4,e5) {
         }
         heatmap.setData(points);
 
+    });
+}
+
+function getCount(d,e1,e2,e3,e4,e5) {
+    $.ajax({
+        url: "/events/count/"+e1+"/"+e2+"/"+e3+"/"+e4+"/"+e5+"/"+dateString,
+    }).done(function( data ) {
+        console.log(data);
     });
 }
 
