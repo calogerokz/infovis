@@ -7,3 +7,15 @@
 .evTitle {
     color: white;
 }
+
+#sSlider .slider-track-low {
+    background: white;
+}
+
+#sSlider .slider-track-high {
+    background: white;
+}
+
+#sSlider .slider-selection{
+    background: white;
+}

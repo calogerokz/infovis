@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    $("#seasonSlider").slider({});
+    $("#seasonSlider").slider({id: "sSlider", min:1, max:4, value:1, step:1, tooltip:"hide", ticks:[1,2,3,4], ticks_labels:["winter","spring","summer","autum"]});
     $("#seasonSlider").slider().on('slideStop', function(ev){
         var sliderDay = $("#seasonSlider").data('slider').getValue();
         sliderF(sliderDay);
