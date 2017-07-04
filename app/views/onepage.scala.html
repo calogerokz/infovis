@@ -1,0 +1,263 @@
+@(title: String)
+@main(title) {
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>NY 311 Requests</h1>
+        <h3>311 Calls: a window to life in New York</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+        <a href="#services" class="btn btn-dark btn-lg">See 2016 events</a>
+        <a href="#portfolio" class="btn btn-dark btn-lg">Statistics</a>
+    </div>
+</header>
+
+<!-- About -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="story">
+                    <p>New York City is often referred to collectively as the five boroughs - Brooklyn, Queens, Manhattan,
+
+                        The Bronx, and Staten Island.</p>
+
+                    <p>If the boroughs were each independent cities, four of the boroughs (Brooklyn, Queens, Manhattan, and
+
+                        the Bronx) would be among the ten most populous cities in the United States (Staten island would be
+
+                        ranked 37th) ; these same boroughs are coterminous with the four most densely populated counties in
+
+                        the United States (New York [Manhattan], Kings [Brooklyn], Bronx, and Queens).</p>
+
+                    <p><b>311</b> is a special telephone number supported in many communities in Canada and the United States.
+
+                        The number provides access to non-emergency municipal services. People can call in many cities to
+
+                        find information about services, make complaints, or report problems like graffiti or road damage. The
+
+                        number 311 is intended in part to divert routine inquiries and non-urgent community concerns from the
+
+                        911 number which is reserved for emergency service. 311 has evolved with technological advances
+
+                        into a multi-channel service that connects citizen with government, while also providing a wealth of
+
+                        data that improves how cities are run.</p>
+
+                    <p>For us, we might find some interesting fact of New Yorkers’ life by exploring 311 data. After
+
+                        exploring the data we have, we found that, for the past seven years, below complaints are always listed
+
+                        on top of the complaint/requires list. For a busy city like New York, it might not be a surprise to see
+
+                        noise complaint is on top of the list; however, in such a modern city, it is a bit surprise to see that
+
+                        "Heating" and "Heat/Hot Water" are on top of those complaints. In deed, "Heating" and "Heat/Hot
+
+                        Water" are always listed at top 1 on the list.</p>
+                    <ul>
+                        <li>Heating/Hot water</li>
+                        <li>Noise – Residential</li>
+                        <li>Light Condition</li>
+                        <li>Street Condition</li>
+                        <li>Blocked Driveway</li>
+                        <li>Water System</li>
+                        <li>Illegal Parking</li>
+                    </ul>
+
+                    <p>Can we see more from the data? What the Now Yorkers most concern about, or what the New Yorkers
+
+                        are struggling in their daily life; what factors have the most impact on their daily life; if special
+
+                        events/incidents have significant impact on New Yorkers’ daily life. And it is also interesting to see if
+
+                        there are any patterns regarding the five boroughs for those complaints.</p>
+
+                    <p>With those questions in mind we look future into our data. We found that Queens is "biggest" borough
+
+                        among five boroughs, but Brooklyn has the "biggest" complaints. But it is not a surprise if we look at
+
+                        population density; Brooklyn has larger population than Queens. On the other hand, Staten Island has
+
+                        the least "Heating" and "Heat/Hot Water" complaints/requires, but it is the third largest in area
+
+                        150 km<sup>2</sup>. It has 0.5% complaint rate regarding “heating” in year 2016 (2197 complaints over its
+
+                        population of 476,015), it is a lot more less than the overall New York complaint rate of 2.7%
+
+                        regarding “heating” in year 2016. What is on your mind now? You are right, Staten Island is the richest
+
+                        borough among five.</p>
+
+                    <p>(Complaint numbers info from dataset, populations info from <a href="https://en.wikipedia.org/wiki/Staten_Island">Wikipedia</a>
+
+                        , income info from <a href="http://www.slate.com/articles/business/moneybox/2014/01/new_york_city_census_data_manhattan_and_brooklyn_are_much_poorer_than_you.html">here</a>
+                        )</p>
+
+                    <p>We design two visualization graphs with the goal to unfold some insight from 311 calls. The first graph
+
+                        is to show the distribution of complaint types among five boroughs. See below graph. On the right
+
+                        hand side of the New York map, the top 10 complaints/requires are listed. You can choose one or few
+
+                        of them to see the distribution according to the five boroughs; you can also specify the time/time
+
+                        window to see if different time has different affect on 311 calls.</p>
+
+                    <p>It is not hard to imagine, like “heating” complaint/requires have strong seasonal pattern, calls are
+
+                        highly concentrate in winter season; (---- Will add it if we can make a graph to show seasonal pattern.)
+
+                        requires regarding “snow” are mainly happened in winter, especially in January. On the other hand,
+
+                        “noise” complaints tend to have peaks on the weekends and on the public holidays. But, is there
+
+                        anything else? What factors have the most impact on New Yorkers’ daily life, if special
+
+                        events/incidents have significant impact on New Yorkers’ daily life? We found that other than the
+
+                        usually complains about "noise", "heating"; "LEAD” complaint become one on the top of the list on St
+
+                        Patrick’s Day. There are about 5,000 "Lead" complaints in year 2016, but there are 388 "Lead"
+
+                        complains on the single day of St Patrick's Day. It is almost 8% of the whole year’s complaints in a
+
+                        single day.</p>
+
+                    <p>The second graph is trying to find some insight of how events/incidents impact on 311 calls. We pick
+
+                        two events/incidents for each season, to see how are the impacts on 311 calls. (then will go on the
+
+                        descript how the interface works)</p>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+<!-- Services -->
+<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+<section id="services" class="services bg-primary">
+    <div class="container">
+        <center><h2>Events</h2></center>
+        <hr class="small">
+        <div class="row">
+            <div class="col-sm-2">
+                Please select a season
+            </div>
+            <div class="col-sm-10">
+                <input id="seasonSlider" type="text"
+                data-provide="slider"
+                data-slider-ticks="[1, 2, 3, 4]"
+                data-slider-ticks-labels='["winter", "spring", "summer", "autumn"]'
+                data-slider-min="1"
+                data-slider-max="4"
+                data-slider-step="1"
+                data-slider-value="1"
+                data-slider-tooltip="hide" style="width:100%;" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="row" id="eventContainer">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row" id="eventTitle"></div>
+                <div class="row" id="event" style="padding-left: 45px">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</section>
+
+<!-- Portfolio -->
+<section id="portfolio" class="portfolio" style="margin-top: -50px;">
+    <aside class="callout">
+        <div class="text-vertical-center">
+            <h1>Statistics</h1>
+        </div>
+    </aside>
+    <iframe style="width: 100%; height: 820px" src="https://app.powerbi.com/view?r=eyJrIjoiYzQ5MTgxZDYtNTU3My00MDkwLTg5MzQtYTBjZWIwMGVmNGY4IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+</section>
+
+
+
+<!-- Footer -->
+<footer style="margin-top: -150px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <hr class="small">
+                <p class="text-muted">Copyright &copy; Group 311 Requests 2017</p>
+            </div>
+        </div>
+    </div>
+    <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+</footer>
+
+<!-- Custom Theme JavaScript -->
+<script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#],[data-toggle],[data-target],[data-slide])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    //#to-top button appears after scrolling
+    var fixed = false;
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > 250) {
+            if (!fixed) {
+                fixed = true;
+                // $('#to-top').css({position:'fixed', display:'block'});
+                $('#to-top').show("slow", function() {
+                    $('#to-top').css({
+                        position: 'fixed',
+                        display: 'block'
+                    });
+                });
+            }
+        } else {
+            if (fixed) {
+                fixed = false;
+                $('#to-top').hide("slow", function() {
+                    $('#to-top').css({
+                        display: 'none'
+                    });
+                });
+            }
+        }
+    });
+
+</script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2K0n8NjkUcqj3Ozphbk3SqTMhnxYgfts&libraries=visualization">
+    </script>
+    <script src="@routes.Assets.versioned("javascripts/events.js")" type="text/javascript"></script>
+}

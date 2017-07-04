@@ -6,7 +6,7 @@ $( document ).ready(function() {
         }).done(function( data ) {
             $("#eventContainer").html("");
             for(i=0; i<data[0].length; i++) {
-                $("#eventContainer").append("<div class='row'><h4><a href='#' onclick='show("+data[0][i][0][0]+")'>"+data[0][i][0][6]+"</a></h4><p>"+data[0][i][0][7]+"</p></div>");
+                $("#eventContainer").append("<div class='row'><h4><a href='#statistics' class='evTitle' onclick='show("+data[0][i][0][0]+")'>"+data[0][i][0][6]+"</a></h4><p>"+data[0][i][0][7]+"</p></div>");
 
             }
         });

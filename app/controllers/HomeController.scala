@@ -25,8 +25,12 @@ class HomeController @Inject() extends Controller {
     Ok(views.html.map("New York 311 requests map"))
   }
 
-    def events = Action {
+  def events = Action {
     Ok(views.html.events("New York 311 requests statistics"))
+  }
+
+  def onepage = Action {
+    Ok(views.html.onepage("New York 311 requests"))
   }
 
 

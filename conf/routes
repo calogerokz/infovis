@@ -3,9 +3,12 @@
 # ~~~~
 
 # Pages
-GET     /                                                  controllers.HomeController.index
+GET     /intro                                             controllers.HomeController.index
 GET     /map                                               controllers.HomeController.map
 GET     /events                                            controllers.HomeController.events
+GET     /                                                  controllers.HomeController.onepage
+
+
 
 
 # API
