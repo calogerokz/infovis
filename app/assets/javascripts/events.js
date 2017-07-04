@@ -1,26 +1,32 @@
 $( document ).ready(function() {
     $("#seasonSlider").slider({});
     $("#seasonSlider").slider().on('slideStop', function(ev){
-        $.ajax({
-            url: "/events/"+$("#seasonSlider").data('slider').getValue(),
-        }).done(function( data ) {
-            $("#eventContainer").html("");
-            for(i=0; i<data[0].length; i++) {
-                $("#eventContainer").append("<div class='row'><h4><a href='#statistics' class='evTitle' onclick='show("+data[0][i][0][0]+")'>"+data[0][i][0][6]+"</a></h4><p>"+data[0][i][0][7]+"</p></div>");
-
-            }
-        });
+        var sliderDay = $("#seasonSlider").data('slider').getValue();
+        sliderF(sliderDay);
     });
+    sliderF("1");
+});
+
+var sliderF = function(sd){
     $.ajax({
-        url: "/events/1",
+        url: "/events/"+sd,
     }).done(function( data ) {
         $("#eventContainer").html("");
         for(i=0; i<data[0].length; i++) {
-            $("#eventContainer").append("<div class='row'><h4><a href='#' onclick='show("+data[0][i][0][0]+")'>"+data[0][i][0][6]+"</a></h4><p>"+data[0][i][0][7]+"</p></div>");
+            $("#eventContainer").append("<div class='row'><h4><a href='#statistics' class='evTitle' onclick='show("+data[0][i][0][0]+")'>"+data[0][i][0][6]+"</a></h4><p>"+data[0][i][0][7]+"</p></div>");
 
         }
     });
-});
+    if (sd == "1") {
+        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiNTBhZmRlYTctNDYxYS00MWQ0LTllYzktYmUxZjJlMDE3MThmIiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+    } else if (sd == "2") {
+        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiZmU1YTg3YTctODNhOC00MDVlLThmZjYtODQ4MjhhMGI4Nzc3IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+    } else if (sd == "3") {
+        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiM2UzMmJkNDEtYjVjYS00MzA4LTgzYmMtNDVmYmY0ZDZiMmI4IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+    } else {
+        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiODEyMTNhNWQtYWJhZC00NzY3LWJhZDUtOGQ2ZmY3MGQyYmEzIiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+    }
+};
 
 var dayStart = "";
 var dayTransit ="";
