@@ -23,7 +23,6 @@ $( document ).ready(function() {
 });
 
 var dayStart = "";
-var dayEnd = "";
 var dayTransit ="";
 
 var show = function(id) {
@@ -32,7 +31,6 @@ var show = function(id) {
         url: url,
     }).done(function( data ) {
             dayStart = moment(data[0][11]);
-            dayEnd = moment(data[0][13]);
             var nrDays = moment(data[0][13],"YYYY-MM-DD").diff(moment(data[0][11],"YYYY-MM-DD"))/86400000+1;
             $("#eventTitle").html("<center><h3>"+data[0][6]+"</h3></center>");
             var ticks = "[";
