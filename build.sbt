@@ -15,3 +15,5 @@ libraryDependencies += "org.webjars.npm" % "jquery" % "3.2.1"
 libraryDependencies += "org.webjars.npm" % "bootstrap" % "3.3.7"
 libraryDependencies += "org.webjars.npm" % "bootstrap-slider" % "9.7.2"
 libraryDependencies += "org.webjars.npm" % "async" % "2.1.4"
+libraryDependencies += "org.webjars.bower" % "moment" % "2.18.1"
+

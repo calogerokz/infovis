@@ -22,36 +22,41 @@ $( document ).ready(function() {
     });
 });
 
-var day = "";
-var day2 = "";
-var day3 = "";
+var dayStart = "";
+var dayEnd = "";
+var dayTransit ="";
 
 var show = function(id) {
     var url = "/events/id/"+id;
     $.ajax({
         url: url,
     }).done(function( data ) {
-            day = new Date(data[0][10]);
-            day2 = new Date(day-1);
-            day3 = new Date(day);
-            day3.setDate(day.getDate() + 1);
+            dayStart = moment(data[0][11]);
+            dayEnd = moment(data[0][13]);
+            var nrDays = moment(data[0][13],"YYYY-MM-DD").diff(moment(data[0][11],"YYYY-MM-DD"))/86400000+1;
             $("#eventTitle").html("<center><h3>"+data[0][6]+"</h3></center>");
-            $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks='[1, 2, 3]' data-slider-min='1' data-slider-max='3' data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' /><br/><br/>");
+            var ticks = "[";
+            for (i = 1; i <= nrDays; i++) {
+                if (i==nrDays) {
+                    ticks = ticks+i+"]";
+                } else {
+                    ticks = ticks+i+", ";
+                }
+            }
+            $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks="+ticks+" data-slider-min='1' data-slider-max="+nrDays+" data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' /><br/><br/>");
             $("#eventSlider").slider({});
             $("#eventSlider").slider().on('slideStop', function(ev){
-                if ($("#eventSlider").data('slider').getValue() == 1){
-                    getPoints(day2.toISOString(),data[0][12]);
-                } else if ($("#eventSlider").data('slider').getValue() == 2) {
-                    getPoints(day.toISOString(),data[0][12]);
-                } else {
-                    getPoints(day3.toISOString(),data[0][12]);
-                }
+                var day = $("#eventSlider").data('slider').getValue();
+                day = day-1;
+                dayTransit = dayStart;
+                dayTransit.add(day, 'days');
+                getPoints(dayTransit.format(),data[0][12]);
             });
             $("#event").append("<div id='title' style='height:50px;'><h3>"+data[0][12]+"</h3></div>");
             $("#event").append("<div id='map' style='height:500px;'></div>");
 
             initMap();
-            getPoints(day2.toISOString(),data[0][12]);
+            getPoints(dayStart.format(),data[0][12]);
             $("#event").append("<br/><h3>Top 5 complaints statistics for 3 days</h3>1."+data[0][1]+"<br/> 2."+data[0][2]+"<br/> 3."+data[0][3]+"<br/> 4."+data[0][4]+"<br/> 5."+data[0][5]);
     });
 };
