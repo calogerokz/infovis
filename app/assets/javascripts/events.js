@@ -17,14 +17,15 @@ var sliderF = function(sd){
 
         }
     });
+    $("#top5").html("");
     if (sd == "1") {
-        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiNTBhZmRlYTctNDYxYS00MWQ0LTllYzktYmUxZjJlMDE3MThmIiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+        $("#eventStream").html('<iframe style="width: 100%; height: 820px" src="https://app.powerbi.com/view?r=eyJrIjoiNTBhZmRlYTctNDYxYS00MWQ0LTllYzktYmUxZjJlMDE3MThmIiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
     } else if (sd == "2") {
-        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiZmU1YTg3YTctODNhOC00MDVlLThmZjYtODQ4MjhhMGI4Nzc3IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+        $("#eventStream").html('<iframe style="width: 100%; height: 820px" src="https://app.powerbi.com/view?r=eyJrIjoiZmU1YTg3YTctODNhOC00MDVlLThmZjYtODQ4MjhhMGI4Nzc3IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
     } else if (sd == "3") {
-        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiM2UzMmJkNDEtYjVjYS00MzA4LTgzYmMtNDVmYmY0ZDZiMmI4IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+        $("#eventStream").html('<iframe style="width: 100%; height: 820px" src="https://app.powerbi.com/view?r=eyJrIjoiM2UzMmJkNDEtYjVjYS00MzA4LTgzYmMtNDVmYmY0ZDZiMmI4IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
     } else if (sd == "4") {
-        $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiODEyMTNhNWQtYWJhZC00NzY3LWJhZDUtOGQ2ZmY3MGQyYmEzIiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
+        $("#eventStream").html('<iframe style="width: 100%; height: 820px" src="https://app.powerbi.com/view?r=eyJrIjoiODEyMTNhNWQtYWJhZC00NzY3LWJhZDUtOGQ2ZmY3MGQyYmEzIiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
     }
 };
 
@@ -62,11 +63,11 @@ var show = function(id) {
                 getPoints(dayTransit.format(),data[0][12]);
             });
             $("#event").append("<div id='title' style='height:50px;'><h3>"+data[0][12]+"</h3></div>");
-            $("#event").append("<div id='map' style='height:500px;'></div>");
+            $("#event").append("<div id='map' style='height:500px; margin-bottom: 25px;'></div>");
 
             initMap();
             data2 = data[0][12];
-            $("#event").append("<br/><h3>Top 5 complaints statistics for 3 days</h3>1."+data[0][1]+"<br/> 2."+data[0][2]+"<br/> 3."+data[0][3]+"<br/> 4."+data[0][4]+"<br/> 5."+data[0][5]);
+            $("#top5").html("<br/><h3>Top 5 complaints statistics for 3 days</h3>1."+data[0][1]+"<br/> 2."+data[0][2]+"<br/> 3."+data[0][3]+"<br/> 4."+data[0][4]+"<br/> 5."+data[0][5]);
             counter = 1;
             for (i = 1; i <= nrDays; i++) {
                 setTimeout(test, (i-1)*2500);
