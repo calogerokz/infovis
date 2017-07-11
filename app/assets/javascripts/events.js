@@ -4,7 +4,7 @@ $( document ).ready(function() {
         var sliderDay = $("#seasonSlider").data('slider').getValue();
         sliderF(sliderDay);
     });
-    sliderF("1");
+    sliderF("noSeason");
 });
 
 var sliderF = function(sd){
@@ -23,7 +23,7 @@ var sliderF = function(sd){
         $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiZmU1YTg3YTctODNhOC00MDVlLThmZjYtODQ4MjhhMGI4Nzc3IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
     } else if (sd == "3") {
         $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiM2UzMmJkNDEtYjVjYS00MzA4LTgzYmMtNDVmYmY0ZDZiMmI4IiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
-    } else {
+    } else if (sd == "4") {
         $("#eventStream").html('<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiODEyMTNhNWQtYWJhZC00NzY3LWJhZDUtOGQ2ZmY3MGQyYmEzIiwidCI6IjMwNWU1OTVmLWU5YzItNDRmOC05ZGEwLTNhODMzNzA1MTg4YyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>');
     }
 };

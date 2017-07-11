@@ -13,6 +13,7 @@ GET     /                                                  controllers.HomeContr
 
 # API
 GET     /query/:query                                      controllers.Api.query(query)
+GET     /events/noSeason                                   controllers.Api.eventsNoSeason
 GET     /events/:season                                    controllers.Api.events(season)
 GET     /events/id/:id                                     controllers.Api.event(id)
 GET     /events/:first/:second/:third/:forth/:fifth/:day/:month/:year   controllers.Api.eventFive(first,second,third,forth,fifth,day,month,year)
