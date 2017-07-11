@@ -45,16 +45,16 @@ var show = function(id) {
             var nrDays = moment(data[0][13],"YYYY-MM-DD").diff(moment(data[0][11],"YYYY-MM-DD"))/86400000+1;
             $("#eventTitle").html("<center><h3>"+data[0][6]+"</h3></center>");
             dayAuto = dayStart;
-            var ticks = "[";
+            var ticksContainer = [];
+            var labels = [];
+            dayTransit = dayStart;
             for (i = 1; i <= nrDays; i++) {
-                if (i==nrDays) {
-                    ticks = ticks+i+"]";
-                } else {
-                    ticks = ticks+i+", ";
-                }
+                ticksContainer.push(i);
+                labels.push(dayTransit.format('LL'));
+                dayTransit.add(1, 'days');
             }
-            $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks="+ticks+" data-slider-min='1' data-slider-max="+nrDays+" data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' /><br/><br/>");
-            eventSlider = $("#eventSlider").slider({});
+            $("#event").html("<div class='row'><div class='col-lg-1'></div><div class='col-lg-10'><input id='eventSlider' type='text' style='width:100%;' /></div><div class='col-lg-1'></div></div><br/><br/>");
+            eventSlider = $("#eventSlider").slider({id: "eSlider", min:1, max:4, value:1, step:1, tooltip:"hide", ticks:ticksContainer, ticks_labels:labels});
             $("#eventSlider").slider().on('slideStop', function(ev){
                 var day = $("#eventSlider").data('slider').getValue();
                 day = day-1;
