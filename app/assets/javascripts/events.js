@@ -30,6 +30,10 @@ var sliderF = function(sd){
 
 var dayStart = "";
 var dayTransit ="";
+var dayAuto = "";
+var eventSlider = "";
+var data2 = "";
+var counter = 1;
 
 var show = function(id) {
     var url = "/events/id/"+id;
@@ -39,6 +43,7 @@ var show = function(id) {
             dayStart = moment(data[0][11]);
             var nrDays = moment(data[0][13],"YYYY-MM-DD").diff(moment(data[0][11],"YYYY-MM-DD"))/86400000+1;
             $("#eventTitle").html("<center><h3>"+data[0][6]+"</h3></center>");
+            dayAuto = dayStart;
             var ticks = "[";
             for (i = 1; i <= nrDays; i++) {
                 if (i==nrDays) {
@@ -48,7 +53,7 @@ var show = function(id) {
                 }
             }
             $("#event").html("<input id='eventSlider' type='text' data-provide='slider' data-slider-ticks="+ticks+" data-slider-min='1' data-slider-max="+nrDays+" data-slider-step='1' data-slider-value='1' data-slider-tooltip='hide' style='width:100%;' /><br/><br/>");
-            $("#eventSlider").slider({});
+            eventSlider = $("#eventSlider").slider({});
             $("#eventSlider").slider().on('slideStop', function(ev){
                 var day = $("#eventSlider").data('slider').getValue();
                 day = day-1;
@@ -60,10 +65,22 @@ var show = function(id) {
             $("#event").append("<div id='map' style='height:500px;'></div>");
 
             initMap();
-            getPoints(dayStart.format(),data[0][12]);
+            data2 = data[0][12];
             $("#event").append("<br/><h3>Top 5 complaints statistics for 3 days</h3>1."+data[0][1]+"<br/> 2."+data[0][2]+"<br/> 3."+data[0][3]+"<br/> 4."+data[0][4]+"<br/> 5."+data[0][5]);
+            counter = 1;
+            for (i = 1; i <= nrDays; i++) {
+                setTimeout(test, (i-1)*2500);
+            }
     });
 };
+
+function test(){
+    dayTransit = dayStart;
+    dayTransit.add(counter-1, 'days');
+    getPoints(dayTransit.format(),data2);
+    eventSlider.slider('setValue', counter);
+    counter = counter + 1;
+}
 
 var map, heatmap;
 
