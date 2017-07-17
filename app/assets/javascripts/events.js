@@ -42,12 +42,13 @@ var show = function(id) {
         url: url,
     }).done(function( data ) {
             dayStart = moment(data[0][11]);
+            console.log(data[0][11],dayStart);
             var nrDays = moment(data[0][13],"YYYY-MM-DD").diff(moment(data[0][11],"YYYY-MM-DD"))/86400000+1;
             $("#eventTitle").html("<center><h3>"+data[0][6]+"</h3></center>");
-            dayAuto = dayStart;
+            dayAuto = moment(dayStart);
             var ticksContainer = [];
             var labels = [];
-            dayTransit = dayStart;
+            dayTransit = moment(dayStart);
             for (i = 1; i <= nrDays; i++) {
                 ticksContainer.push(i);
                 labels.push(dayTransit.format('LL'));
@@ -58,7 +59,7 @@ var show = function(id) {
             $("#eventSlider").slider().on('slideStop', function(ev){
                 var day = $("#eventSlider").data('slider').getValue();
                 day = day-1;
-                dayTransit = dayStart;
+                dayTransit = moment(dayStart);
                 dayTransit.add(day, 'days');
                 getPoints(dayTransit.format(),data[0][12]);
             });
@@ -76,8 +77,9 @@ var show = function(id) {
 };
 
 function test(){
-    dayTransit = dayStart;
+    dayTransit = moment(dayStart);
     dayTransit.add(counter-1, 'days');
+    console.log(counter,dayTransit.format(),dayStart.format());
     getPoints(dayTransit.format(),data2);
     eventSlider.slider('setValue', counter);
     counter = counter + 1;
